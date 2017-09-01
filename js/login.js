@@ -24,6 +24,6 @@ authCallBack = function(resp)
 {
     if(resp["status"]=="SUCCESS")
     {
-      window.location.replace("dummy.html");
+      window.location.replace("Welcome.html");
     }
 }

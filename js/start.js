@@ -5,7 +5,7 @@ $(document).ready(function()
       status = data["status"]
       if(status=="authenticated")
       {
-        window.location.replace("html/dummy.html");
+        window.location.replace("html/Welcome.html");
       }
       else
       {
