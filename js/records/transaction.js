@@ -289,3 +289,66 @@ var displayTransactionTable = function(tableId, transactions)
 
   }
 }
+
+
+var displayTransactionSelect = function(selectListId, transactions) {
+
+    if(transactions!=null)
+    {
+        var cnt = 0;
+        var firstLine = true;
+        var transactionKeys = null;
+        for(var i=0; i<transactions.length; i++)
+        {
+            if(cnt==100)
+            {
+                break;
+            }
+            else
+            {
+                cnt++;
+            }
+            var transaction = transactions[i];
+            if(firstLine)
+            {
+                transactionKeys = Object.keys(transaction);
+                firstLine = false;
+            }
+            var optionString = '<option';
+            if("ID" in transaction)
+            {
+                var tId = transaction["ID"];
+                optionString+=' value="'+tId+'"';
+            }
+            else if("Transaction Type" in transaction)
+            {
+                var tType = transaction["Transaction Type"];
+                optionString+=' class="'+tType+'"';
+            }
+            optionString+=">";
+            if(transactionKeys!=null)
+            {
+                for(var j=0; j<transactionKeys.length; j++)
+                {
+                    var transactionKey = transactionKeys[j];
+                    if(transactionKey=="ID" || transactionKey=="Transaction Type")
+                    {
+                        continue;
+                    }
+                    var value = transaction[transactionKey];
+                    var spanString = '<span class="transactionSelectSpan">';
+                    if(value!=null)
+                    {
+                        spanString+=value;
+                    }
+                    spanString+="</span>";
+                    optionString+=spanString;
+                }
+                optionString+="</option>";
+                $(selectListId).append(optionString);
+
+            }
+        }
+    }
+
+}
