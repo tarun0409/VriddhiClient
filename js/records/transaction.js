@@ -298,6 +298,34 @@ var displayTransactionSelect = function(selectListId, transactions) {
         var cnt = 0;
         var firstLine = true;
         var transactionKeys = null;
+        var tValueLengths = new Object();
+        for(var i=0; i<transactions.length;i++)
+        {
+            var transaction = transactions[i];
+            for(var key in transaction)
+            {
+                var value = transaction[key];
+                if(value!=null)
+                {
+                    var valueString = ""+value;
+                    var valLen = valueString.length;
+                    if(key in tValueLengths)
+                    {
+                        var oldLen = tValueLengths[key];
+                        if(valLen>oldLen)
+                        {
+                            tValueLengths[key] = valLen;
+                        }
+                    }
+                    else
+                    {
+                        tValueLengths[key] = valLen;
+                    }
+                }
+
+            }
+        }
+        console.log(JSON.stringify(tValueLengths));
         for(var i=0; i<transactions.length; i++)
         {
             if(cnt==100)
@@ -314,7 +342,7 @@ var displayTransactionSelect = function(selectListId, transactions) {
                 transactionKeys = Object.keys(transaction);
                 firstLine = false;
             }
-            var optionString = '<option';
+            var optionString = '<option class="transactionOptions"';
             if("ID" in transaction)
             {
                 var tId = transaction["ID"];
@@ -336,13 +364,33 @@ var displayTransactionSelect = function(selectListId, transactions) {
                         continue;
                     }
                     var value = transaction[transactionKey];
-                    var spanString = '<span class="transactionSelectSpan">';
+                    var spaces = 5;
+                    var allowedLen = tValueLengths[transactionKey];
+                    var optionValueString = ""+value;
                     if(value!=null)
                     {
-                        spanString+=value;
+                        var valString = ""+value;
+                        var valLen = valString.length;
+                        if(transactionKey=="Item Name")
+                        {
+                            console.log("value length = "+valLen);
+                        }
+                        spaces += (allowedLen-valLen);
                     }
-                    spanString+="</span>";
-                    optionString+=spanString;
+                    else
+                    {
+                        spaces+=allowedLen;
+                    }
+                    if(transactionKey=="Item Name")
+                    {
+                        console.log("No of spaces = "+spaces);
+                    }
+                    for(var k=0; k<spaces; k++)
+                    {
+                        optionValueString+="&nbsp;";
+                    }
+                    optionString+=optionValueString;
+
                 }
                 optionString+="</option>";
                 $(selectListId).append(optionString);
