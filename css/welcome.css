@@ -1,0 +1,14 @@
+table, th, td {
+   border: 1px solid black;
+   align-items: center;
+}
+table th,td
+{
+  text-align: center;
+}
+.BUY {
+  background-color:#FFDCDC
+}
+.SELL {
+  background-color:#D0F3BF
+}
