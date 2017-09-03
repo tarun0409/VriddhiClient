@@ -7,7 +7,9 @@
     <script src="../../js/records/get/items.js" charset="utf-8"></script>
     <script src="../../js/records/display/items.js" charset="utf-8"></script>
     <script src="../../js/records/get/accounts.js" charset="utf-8"></script>
+    <script src="../../js/records/get/contacts.js" charset="utf-8"></script>
     <script src="../../js/records/display/accounts.js" charset="utf-8"></script>
+    <script src="../../js/records/display/contacts.js" charset="utf-8"></script>
     <script src="../../js/page/modals/transaction_create.js" charset="utf-8"></script>
   </head>
   <body>
@@ -26,7 +28,27 @@
       <p>Amount:</p><input type="text" name="Transaction Amount"><br>
 
       <p>Account:</p>
-      <select id="accountsSelect"></select>
+      <select id="sourceAccountSelect"></select>
+
+      <br>
+
+      <p>Buyer:</p>
+      <select id="buyerSelect"></select>
+      <br>
+
+      <p>Seller:</p>
+      <select id="sellerSelect"></select>
+      <br>
+
+      <p>From Account:</p>
+      <select id="fromAccountSelect"></select>
+
+      <br>
+
+      <p>To Account:</p>
+      <select id="toAccountSelect"></select>
+
+      <br>
 
   </body>
 </html>

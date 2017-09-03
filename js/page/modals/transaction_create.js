@@ -5,7 +5,8 @@ $(document).ready(function(){
       if(itemData!=null)
       {
           var itemNames = getItemNames(itemData);
-          displayItemNamesInSelectList('#itemsSelect',itemNames);
+          var itemSelectIds = ['#itemsSelect'];
+          displayItemNamesInSelectList(itemSelectIds,itemNames);
       }
   });
 
@@ -14,9 +15,23 @@ $(document).ready(function(){
       if(accountData!=null)
       {
           var accountNames = getAccountNames(accountData);
-          displayAccountNamesInSelectList('#accountsSelect',accountNames);
+          var accountSelectIds = ['#sourceAccountSelect','#fromAccountSelect','#toAccountSelect'];
+          displayAccountNamesInSelectList(accountSelectIds,accountNames);
       }
 
   });
+
+
+  var getAllContacts = getContacts(null);
+  getAllContacts.done(function(contactData){
+      if(contactData!=null)
+      {
+          var contactNames = getContactNames(contactData);
+          var contactSelectIds = ['#buyerSelect','#sellerSelect'];
+          displayContactNamesInSelectList(contactSelectIds,contactNames);
+      }
+
+  });
+
 
 });

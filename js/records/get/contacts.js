@@ -46,3 +46,29 @@ var getContactsByIds = function(ids,limit)
         }
     }
 }
+
+var getContactNames = function(contactData){
+    var contactNames = [];
+    if(contactData!=null)
+    {
+        var contacts = contactData["contacts"];
+        if(contacts!=null)
+        {
+            for(var i=0; i<contacts.length; i++)
+            {
+                var contact = contacts[i];
+                var contactObj = new Object();
+                if("Contact Name" in contact)
+                {
+                    contactObj["Contact Name"] = contact["Contact Name"];
+                }
+                if("ID" in contact)
+                {
+                    contactObj["ID"] = contact["ID"];
+                }
+                contactNames.push(contactObj);
+            }
+        }
+    }
+    return contactNames;
+}

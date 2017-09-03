@@ -1,5 +1,6 @@
-var displayItemNamesInSelectList = function(selectListId, itemNames)
+var displayItemNamesInSelectList = function(selectListIds, itemNames)
 {
+    var allOptions = "";
     if(itemNames!=null)
     {
         for(var i=0; i<itemNames.length; i++)
@@ -18,7 +19,13 @@ var displayItemNamesInSelectList = function(selectListId, itemNames)
                 optionString+=itemName;
             }
             optionString+='</option>';
-            $(selectListId).append(optionString);
+            allOptions+=optionString;
+
+        }
+        for(var j=0; j<selectListIds.length; j++)
+        {
+            var selectListId = selectListIds[j];
+            $(selectListId).append(allOptions);
         }
     }
 }

@@ -1,22 +1,22 @@
-var displayAccountNamesInSelectList = function(selectListIds, accountNames)
+var displayContactNamesInSelectList = function(selectListIds, contactNames)
 {
     var allOptions = "";
-    if(accountNames!=null)
+    if(contactNames!=null)
     {
-        for(var i=0; i<accountNames.length; i++)
+        for(var i=0; i<contactNames.length; i++)
         {
-            var accountObj = accountNames[i];
+            var contactObj = contactNames[i];
             var optionString = '<option';
-            if("ID" in accountObj)
+            if("ID" in contactObj)
             {
-                var id = accountObj["ID"];
+                var id = contactObj["ID"];
                 optionString+=' value="'+id+'"';
             }
             optionString+='>';
-            if("Account Name" in accountObj)
+            if("Contact Name" in contactObj)
             {
-                var accountName = accountObj["Account Name"];
-                optionString+=accountName;
+                var contactName = contactObj["Contact Name"];
+                optionString+=contactName;
             }
             optionString+='</option>';
             allOptions+=optionString;
