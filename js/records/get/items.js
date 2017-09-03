@@ -46,3 +46,29 @@ var getItemsByIds = function(ids,limit)
         }
     }
 }
+
+var getItemNames = function(itemData){
+    var itemNames = [];
+    if(itemData!=null)
+    {
+        var items = itemData["items"];
+        if(items!=null)
+        {
+            for(var i=0; i<items.length; i++)
+            {
+                var item = items[i];
+                var itemObj = new Object();
+                if("Item Name" in item)
+                {
+                    itemObj["Item Name"] = item["Item Name"];
+                }
+                if("ID" in item)
+                {
+                    itemObj["ID"] = item["ID"];
+                }
+                itemNames.push(itemObj);
+            }
+        }
+    }
+    return itemNames;
+}

@@ -3,12 +3,30 @@
   <head>
     <meta charset="utf-8">
     <title>Create Transaction</title>
-    <link rel="stylesheet" href="../../css/modals/transaction_create.css">
+    <script src="../../ext_js/jquery-3.2.1.min.js"></script>
+    <script src="../../js/records/get/items.js" charset="utf-8"></script>
+    <script src="../../js/records/display/items.js" charset="utf-8"></script>
+    <script src="../../js/records/get/accounts.js" charset="utf-8"></script>
+    <script src="../../js/records/display/accounts.js" charset="utf-8"></script>
+    <script src="../../js/page/modals/transaction_create.js" charset="utf-8"></script>
   </head>
   <body>
-      <input type="date" name="Transaction Date">
+
+      <p>Transaction Date:</p>
+      <input type="date" name="Transaction Date"><br><br>
+      <p>Transaction Type:</p>
       <input type="radio" name="Transaction Type" value="BUY" checked> Buy<br>
       <input type="radio" name="Transaction Type" value="SELL"> Sell<br>
-      <input type="radio" name="Transaction Type" value="TRANSFER"> Transfer
+      <input type="radio" name="Transaction Type" value="TRANSFER"> Transfer<br>
+
+      <p>Item:</p>
+      <select id="itemsSelect"></select>
+
+      <p>Quantity:</p><input type="text" name="Quantity"><br>
+      <p>Amount:</p><input type="text" name="Transaction Amount"><br>
+
+      <p>Account:</p>
+      <select id="accountsSelect"></select>
+
   </body>
 </html>

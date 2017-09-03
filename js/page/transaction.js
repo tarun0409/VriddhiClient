@@ -1,7 +1,7 @@
 $(document).ready(function(){
 
-  var getLastHundredTransactions = getTransactions(null);
-  getLastHundredTransactions.done(function(transactionData){
+  var getAllTransactions = getTransactions(null);
+  getAllTransactions.done(function(transactionData){
       if(transactionData!=null)
       {
           var getTransactionsForWelcomePage = getTransactionsForUI(transactionData);
