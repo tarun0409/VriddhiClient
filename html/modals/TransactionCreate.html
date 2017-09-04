@@ -10,45 +10,64 @@
     <script src="../../js/records/get/contacts.js" charset="utf-8"></script>
     <script src="../../js/records/display/accounts.js" charset="utf-8"></script>
     <script src="../../js/records/display/contacts.js" charset="utf-8"></script>
+    <script src="../../js/records/post/transactions.js" charset="utf-8"></script>
+    <script src="../../js/page/controller/transactions.js" charset="utf-8"></script>
     <script src="../../js/page/modals/transaction_create.js" charset="utf-8"></script>
   </head>
   <body>
 
       <p>Transaction Date:</p>
-      <input type="date" name="Transaction Date"><br><br>
+      <input type="date" id="tDate" name="Transaction Date"><br><br>
       <p>Transaction Type:</p>
       <input type="radio" name="Transaction Type" value="BUY" checked> Buy<br>
       <input type="radio" name="Transaction Type" value="SELL"> Sell<br>
       <input type="radio" name="Transaction Type" value="TRANSFER"> Transfer<br>
 
       <p>Item:</p>
-      <select id="itemsSelect"></select>
+      <select id="itemsSelect">
+          <option disabled selected value> -- None -- </option>
+      </select>
 
-      <p>Quantity:</p><input type="text" name="Quantity"><br>
-      <p>Amount:</p><input type="text" name="Transaction Amount"><br>
+      <p>Quantity:</p><input type="text" id="transactionQuantity" name="Quantity"><br>
+      <p>Amount:</p><input type="text" id="transactionAmount" name="Transaction Amount"><br>
 
       <p>Account:</p>
-      <select id="sourceAccountSelect"></select>
+      <select id="sourceAccountSelect">
+          <option disabled selected value> -- None -- </option>
+      </select>
 
       <br>
 
       <p>Buyer:</p>
-      <select id="buyerSelect"></select>
+      <select id="buyerSelect">
+          <option disabled selected value> -- None -- </option>
+      </select>
       <br>
 
       <p>Seller:</p>
-      <select id="sellerSelect"></select>
+      <select id="sellerSelect">
+          <option disabled selected value> -- None -- </option>
+      </select>
       <br>
 
       <p>From Account:</p>
-      <select id="fromAccountSelect"></select>
+      <select id="fromAccountSelect">
+          <option disabled selected value> -- None -- </option>
+      </select>
 
       <br>
 
       <p>To Account:</p>
-      <select id="toAccountSelect"></select>
+      <select id="toAccountSelect">
+          <option disabled selected value> -- None -- </option>
+      </select>
 
       <br>
 
+      <p>Notes:</p>
+      <textarea rows="5" cols="20" id="transactionNotes"></textarea>
+
+      <br><br>
+      <button type="button" name="tInsert" onclick="insertTransactions()">Create</button>
   </body>
 </html>

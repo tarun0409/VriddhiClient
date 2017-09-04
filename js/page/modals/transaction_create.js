@@ -35,3 +35,27 @@ $(document).ready(function(){
 
 
 });
+
+
+var insertTransactions = function(){
+
+    var transactionObject = getTransactionObjectFromUI('#tDate','Transaction Type','#itemsSelect',
+    '#transactionQuantity','#transactionAmount','#sourceAccountSelect','#buyerSelect','#sellerSelect',
+    '#fromAccountSelect','#toAccountSelect','#transactionNotes');
+    console.log(transactionObject);
+    var transactions = new Array();
+    transactions.push(transactionObject);
+    var insertOneTransaction = postTransactions(transactions);
+    insertOneTransaction.done(function(respData){
+        if(respData!=null)
+        {
+            status = respData["status"];
+            if(status=="SUCCESS")
+            {
+                alert("Transaction inserted successfully!");
+                window.location.replace("../Transaction.html");
+            }
+        }
+    });
+
+}
