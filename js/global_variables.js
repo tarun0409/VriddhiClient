@@ -14,5 +14,5 @@ var transactionLookupVsNameMap = {
   "From Account":"From Account",
   "To Account":"To Account"
 };
-var transactionHeaders = ["Date","Account Name","Quantity","Transaction Amount",
+var transactionHeaders = ["Date","Item Name","Account Name","Quantity","Transaction Amount",
 "Buyer Name","Seller Name","From Account","To Account","Notes"];

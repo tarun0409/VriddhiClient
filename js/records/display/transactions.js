@@ -1,6 +1,5 @@
 var displayTransactionTable = function(tableId, transactions)
 {
-  var firstLine = true;
   var headerString = "<tr>";
   for(var k=0; k<transactionHeaders.length; k++)
   {

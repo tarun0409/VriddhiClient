@@ -141,11 +141,7 @@ var getTransactionsForUI = function(transactionData)
             {
                 var transaction = transactions[i];
                 var myTransaction = new Object();
-                if(transactionKeys==null)
-                {
-                    transactionKeys = Object.keys(transaction);
-                }
-
+                transactionKeys = Object.keys(transaction);
                 for(var j=0; j<transactionKeys.length; j++)
                 {
                     transactionKey = transactionKeys[j];
