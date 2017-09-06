@@ -62,51 +62,32 @@ var getTransactionsForUI = function(transactionData)
         for(var i=0; i<transactions.length; i++)
         {
           var transaction = transactions[i];
-          if("Item ID" in transaction)
+          var lookupKeys = Object.keys(transactionLookupVsTableMap);
+          for(var lk = 0; lk<lookupKeys.length; lk++)
           {
-              itemId = transaction["Item ID"];
-              if(itemId!=null)
+              var lookupKey = lookupKeys[lk];
+              if(lookupKey in transaction)
               {
-                if(itemIds.indexOf(itemId)<0)
-                {
-                  itemIds.push(itemId);
-                }
+                  var tableName = transactionLookupVsTableMap[lookupKey];
+                  var id = transaction[lookupKey];
+                  if(id!=null)
+                  {
+                      if(tableName=="item" && itemIds.indexOf(id)<0)
+                      {
+                          itemIds.push(id);
+                      }
+                      else if(tableName=="account" && accountIds.indexOf(id)<0)
+                      {
+                          accountIds.push(id);
+                      }
+                      else if(tableName=="contact" && contactIds.indexOf(id)<0)
+                      {
+                          contactIds.push(id);
+                      }
+                  }
               }
-          }
-          if("Account ID" in transaction)
-          {
-              accountId = transaction["Account ID"];
-              if(accountId!=null)
-              {
-                if(accountIds.indexOf(accountId)<0)
-                {
-                  accountIds.push(accountId);
-                }
-              }
-          }
-          if("Buyer" in transaction)
-          {
-              buyerId = transaction["Buyer"];
-              if(buyerId!=null)
-              {
-                if(contactIds.indexOf(buyerId)<0)
-                {
-                  contactIds.push(buyerId);
-                }
-              }
-          }
-          if("Seller" in transaction)
-          {
-              sellerId = transaction["Seller"];
-              if(sellerId!=null)
-              {
-                if(contactIds.indexOf(sellerId)<0)
-                {
-                  contactIds.push(sellerId);
-                }
-              }
-          }
-        }
+            }
+         }
         itemIDvsNameMap = new Object();
         contactIDvsNameMap = new Object();
         accountIDvsNameMap = new Object();
@@ -155,12 +136,6 @@ var getTransactionsForUI = function(transactionData)
                 }
             }
             myTransactions = [];
-            myTransactionHeaders = {
-              "Account ID":"Account Name",
-              "Item ID":"Item Name",
-              "Buyer":"Buyer Name",
-              "Seller":"Seller Name"
-            };
             transactionKeys = null;
             for(var i=0; i<transactions.length; i++)
             {
@@ -188,11 +163,15 @@ var getTransactionsForUI = function(transactionData)
                             myTransaction["Date"] = myDateString;
                         }
                     }
-                    else if(transactionKey in myTransactionHeaders)
+                    else if(transactionKey in transactionLookupVsNameMap)
                     {
                         var value = transaction[transactionKey];
                         var newValue = "";
-                        if(transactionKey=="Account ID")
+                        if(value==null)
+                        {
+                            value="";
+                        }
+                        if(transactionKey=="Account ID" || transactionKey=="From Account" || transactionKey=="To Account")
                         {
                             newValue = accountIDvsNameMap[value.toString()];
                         }
@@ -204,7 +183,7 @@ var getTransactionsForUI = function(transactionData)
                         {
                            newValue = contactIDvsNameMap[value.toString()];
                         }
-                        myTransaction[myTransactionHeaders[transactionKey]] = newValue;
+                        myTransaction[transactionLookupVsNameMap[transactionKey]] = newValue;
                     }
                     else
                     {

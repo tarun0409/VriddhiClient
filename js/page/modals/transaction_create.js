@@ -42,7 +42,6 @@ var insertTransactions = function(){
     var transactionObject = getTransactionObjectFromUI('#tDate','Transaction Type','#itemsSelect',
     '#transactionQuantity','#transactionAmount','#sourceAccountSelect','#buyerSelect','#sellerSelect',
     '#fromAccountSelect','#toAccountSelect','#transactionNotes');
-    console.log(transactionObject);
     var transactions = new Array();
     transactions.push(transactionObject);
     var insertOneTransaction = postTransactions(transactions);

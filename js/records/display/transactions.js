@@ -19,7 +19,6 @@ var displayTransactionTable = function(tableId, transactions)
         headerString+="<th>"+header+"</th>";
       }
       headerString+="</tr>";
-      console.log(headerString);
       $(tableId).append(headerString);
       firstLine=false;
     }
@@ -46,7 +45,14 @@ var displayTransactionTable = function(tableId, transactions)
                 myData+="&#8377; ";
             }
             var val = transaction[header];
-            myData+=val+"</td>";
+            if(val==null)
+            {
+                myData+="</td>";
+            }
+            else
+            {
+                myData+=val+"</td>";
+            }
         }
         dataString+=myData;
     }
@@ -122,9 +128,10 @@ var displayTransactionSelect = function(selectListId, transactions) {
                     var value = transaction[transactionKey];
                     var spaces = 5;
                     var allowedLen = tValueLengths[transactionKey];
-                    var optionValueString = ""+value;
+                    var optionValueString = "";
                     if(value!=null)
                     {
+                      optionValueString+=value;
                         var valString = ""+value;
                         var valLen = valString.length;
                         spaces += (allowedLen-valLen);
