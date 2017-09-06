@@ -145,11 +145,7 @@ var getTransactionsForUI = function(transactionData)
                 for(var j=0; j<transactionKeys.length; j++)
                 {
                     transactionKey = transactionKeys[j];
-                    if(transactionKey=="ID")
-                    {
-                        continue;
-                    }
-                    else if(transactionKey=="Transaction Date")
+                    if(transactionKey=="Transaction Date")
                     {
                         var dateString = transaction[transactionKey];
                         var myDateObj = new Date(dateString);

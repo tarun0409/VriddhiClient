@@ -11,11 +11,15 @@
     <script src="../js/records/get/contacts.js" charset="utf-8"></script>
     <script src="../js/records/get/items.js" charset="utf-8"></script>
     <script src="../js/page/transaction.js" charset="utf-8"></script>
+    <script src="../js/records/delete/transactions.js" charset="utf-8"></script>
+    <script src="../js/page/controller/transactions.js" charset="utf-8"></script>
     <link rel="stylesheet" href="../css/transaction.css">
   </head>
   <body>
-    <select class="displayRecords" name="transactionsView" size="10" id="transactionSelect">
+    <select class="displayRecords" name="transactionsView" size="10" id="transactionSelect" multiple>
 
     </select>
+    <br>
+    <button type="button" name="transactionsDelete" onclick="deleteTransactionsByIds('#transactionSelect')">Delete</button>
   </body>
 </html>

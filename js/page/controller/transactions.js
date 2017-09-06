@@ -61,3 +61,20 @@ var getTransactionObjectFromUI = function(dateId, tTypeName, itemSelectId, tQuan
     return transObj;
 
 }
+
+
+var deleteTransactionsByIds = function(transactionSelectListId){
+    var selectedTransactions = $(transactionSelectListId).val();
+    var deleteTransactionsByGivenIds = deleteTransactions(selectedTransactions);
+    deleteTransactionsByGivenIds.done(function(response){
+        if(response!=null)
+        {
+            var status = response["status"];
+            if(status=="SUCCESS")
+            {
+                alert("Transactions deleted successfully!");
+                window.location.reload();
+            }
+        }
+    });
+}
