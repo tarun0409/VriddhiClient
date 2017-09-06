@@ -1,59 +1,46 @@
 var displayTransactionTable = function(tableId, transactions)
 {
-  var headers = [];
   var firstLine = true;
   var headerString = "<tr>";
+  for(var k=0; k<transactionHeaders.length; k++)
+  {
+    var header = transactionHeaders[k];
+    headerString+="<th>"+header+"</th>";
+  }
+  headerString+="</tr>";
+  $(tableId).append(headerString);
   for(var i=0; i<transactions.length; i++)
   {
     var transaction = transactions[i];
-    if(firstLine)
-    {
-      headers = Object.keys(transaction);
-      for(var k=0; k<headers.length; k++)
-      {
-        var header = headers[k];
-        if(header=="Transaction Type")
-        {
-            continue;
-        }
-        headerString+="<th>"+header+"</th>";
-      }
-      headerString+="</tr>";
-      $(tableId).append(headerString);
-      firstLine=false;
-    }
     rowString = "<tr";
-    dataString = "";
-    for(var k=0; k<headers.length; k++)
+    if("Transaction Type" in transaction)
     {
-        header = headers[k];
+        var val = transaction["Transaction Type"];
+        if(val!=null)
+        {
+            rowString+=' class="';
+            rowString+=val+'"';
+        }
+    }
+    dataString = "";
+    for(var k=0; k<transactionHeaders.length; k++)
+    {
+        var header = transactionHeaders[k];
         var myData=""
-        if(header=="Transaction Type")
+        var myData="<td>"
+        if(header in transaction)
         {
             var val = transaction[header];
             if(val!=null)
             {
-                rowString+=' class="';
-                rowString+=val+'"';
+                if(header=="Transaction Amount")
+                {
+                    myData+="&#8377; ";
+                }
+                myData+=val;
             }
         }
-        else
-        {
-            var myData="<td>"
-            if(header=="Transaction Amount")
-            {
-                myData+="&#8377; ";
-            }
-            var val = transaction[header];
-            if(val==null)
-            {
-                myData+="</td>";
-            }
-            else
-            {
-                myData+=val+"</td>";
-            }
-        }
+        myData+="</td>";
         dataString+=myData;
     }
     rowString+=">"+dataString+"</tr>";
@@ -64,33 +51,34 @@ var displayTransactionTable = function(tableId, transactions)
 
 
 var displayTransactionSelect = function(selectListId, transactions) {
-
     if(transactions!=null)
     {
-        var firstLine = true;
-        var transactionKeys = null;
         var tValueLengths = new Object();
         for(var i=0; i<transactions.length;i++)
         {
             var transaction = transactions[i];
-            for(var key in transaction)
+            for(var k=0; k<transactionHeaders.length; k++)
             {
-                var value = transaction[key];
-                if(value!=null)
+                var header = transactionHeaders[k];
+                if(header in transaction)
                 {
-                    var valueString = ""+value;
-                    var valLen = valueString.length;
-                    if(key in tValueLengths)
+                    var value = transaction[header];
+                    if(value!=null)
                     {
-                        var oldLen = tValueLengths[key];
-                        if(valLen>oldLen)
+                        var valueString = ""+value;
+                        var valLen = valueString.length;
+                        if(header in tValueLengths)
                         {
-                            tValueLengths[key] = valLen;
+                            var oldLen = tValueLengths[header];
+                            if(valLen>oldLen)
+                            {
+                                tValueLengths[header] = valLen;
+                            }
                         }
-                    }
-                    else
-                    {
-                        tValueLengths[key] = valLen;
+                        else
+                        {
+                            tValueLengths[header] = valLen;
+                        }
                     }
                 }
 
@@ -99,11 +87,6 @@ var displayTransactionSelect = function(selectListId, transactions) {
         for(var i=0; i<transactions.length; i++)
         {
             var transaction = transactions[i];
-            if(firstLine)
-            {
-                transactionKeys = Object.keys(transaction);
-                firstLine = false;
-            }
             var optionString = '<option class="transactionOptions"';
             if("ID" in transaction)
             {
@@ -116,22 +99,18 @@ var displayTransactionSelect = function(selectListId, transactions) {
                 optionString+=' class="'+tType+'"';
             }
             optionString+=">";
-            if(transactionKeys!=null)
+            for(var j=0; j<transactionHeaders.length; j++)
             {
-                for(var j=0; j<transactionKeys.length; j++)
+                var transactionKey = transactionHeaders[j];
+                if(transactionKey in transaction)
                 {
-                    var transactionKey = transactionKeys[j];
-                    if(transactionKey=="ID" || transactionKey=="Transaction Type")
-                    {
-                        continue;
-                    }
                     var value = transaction[transactionKey];
                     var spaces = 5;
                     var allowedLen = tValueLengths[transactionKey];
                     var optionValueString = "";
                     if(value!=null)
                     {
-                      optionValueString+=value;
+                        optionValueString+=value;
                         var valString = ""+value;
                         var valLen = valString.length;
                         spaces += (allowedLen-valLen);
@@ -145,12 +124,10 @@ var displayTransactionSelect = function(selectListId, transactions) {
                         optionValueString+="&nbsp;";
                     }
                     optionString+=optionValueString;
-
                 }
-                optionString+="</option>";
-                $(selectListId).append(optionString);
-
             }
+            optionString+="</option>";
+            $(selectListId).append(optionString);
         }
     }
 
