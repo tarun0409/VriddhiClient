@@ -2,7 +2,6 @@ var getTransactionObjectFromUI = function(dateId, tTypeName, itemSelectId, tQuan
   tAmountId, sourceAccountId, buyerSelectId, sellerSelectId, fromAccountId, toAccountId, notesId){
     var transObj = new Object();
     var date = new Date($(dateId).val());
-    console.log(date);
     var transDay = date.getDate();
     var transMonth = date.getMonth() + 1;
     var transYear = date.getFullYear();

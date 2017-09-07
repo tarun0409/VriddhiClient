@@ -37,7 +37,7 @@ $(document).ready(function(){
 });
 
 
-var insertTransactions = function(){
+var insertTransaction = function(){
 
     var transactionObject = getTransactionObjectFromUI('#tDate','Transaction Type','#itemsSelect',
     '#transactionQuantity','#transactionAmount','#sourceAccountSelect','#buyerSelect','#sellerSelect',
