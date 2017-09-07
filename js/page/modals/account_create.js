@@ -10,7 +10,7 @@ var insertAccount = function() {
             if(status=="SUCCESS")
             {
                 alert("Account inserted successfully!");
-                window.location.reload();
+                window.location.replace("../Account.html");
             }
         }
     });

@@ -16,3 +16,44 @@ var getAccountObjectFromUI = function(nameId, ownerId, managerId, balanceId) {
       }
       return accountObj;
 }
+
+var getAccountUpdateObjectFromUI = function(nameId,ownerId,managerId,balanceId) {
+      var accountObj = new Object();
+      if(nameId!=null)
+      {
+          var namePh = $(nameId).attr('placeholder');
+          var nameValue = $(nameId).val();
+          if(nameValue!=null && nameValue!="" && (namePh!=nameValue))
+          {
+              accountObj["Account Name"] = nameValue;
+          }
+      }
+      if(ownerId!=null)
+      {
+          var ownerPh = $(nameId).attr('placeholder');
+          var ownerValue = $(ownerId).val();
+          if(ownerValue!=null && ownerValue!="" && (ownerPh!=ownerValue))
+          {
+              accountObj["Account Owner"] = ownerValue;
+          }
+      }
+      if(managerId!=null)
+      {
+          var managerPh = $(managerId).attr('placeholder');
+          var managerValue = $(managerId).val();
+          if(managerValue!=null && managerValue!="" && (managerPh!=managerValue))
+          {
+              accountObj["Account Manager"] = managerValue;
+          }
+      }
+      if(balanceId!=null)
+      {
+          var balancePh = parseFloat($(balanceId).attr('placeholder'));
+          var balanceValue = parseFloat($(balanceId).val());
+          if(balanceValue!=null && !isNaN(balanceValues) && balancePh!=null && !isNaN(balancePh) && (balancePh!=balanceValue))
+          {
+              accountObj["Account Balance"] = balanceValue;
+          }
+      }
+      return accountObj;
+}

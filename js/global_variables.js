@@ -17,3 +17,4 @@ var transactionLookupVsNameMap = {
 var transactionHeaders = ["Date","Item Name","Account Name","Quantity","Transaction Amount",
 "Buyer Name","Seller Name","From Account","To Account","Notes"];
 var accountHeaders = ["Account Name","Account Owner","Account Manager","Account Balance"];
+var updateAccountId = 0;
