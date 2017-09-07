@@ -28,3 +28,83 @@ var displayAccountNamesInSelectList = function(selectListIds, accountNames)
         }
     }
 }
+
+var displayAccountsSelectList = function(selectListId, accountObj){
+    if(accountObj!=null)
+    {
+        accounts = accountObj["accounts"];
+        if(accounts!=null)
+        {
+            var tValueLengths = new Object();
+            for(var i=0; i<accounts.length;i++)
+            {
+                var account = accounts[i];
+                for(var k=0; k<accountHeaders.length; k++)
+                {
+                    var header = accountHeaders[k];
+                    if(header in account)
+                    {
+                        var value = account[header];
+                        if(value!=null)
+                        {
+                            var valueString = ""+value;
+                            var valLen = valueString.length;
+                            if(header in tValueLengths)
+                            {
+                                var oldLen = tValueLengths[header];
+                                if(valLen>oldLen)
+                                {
+                                    tValueLengths[header] = valLen;
+                                }
+                            }
+                            else
+                            {
+                                tValueLengths[header] = valLen;
+                            }
+                        }
+                    }
+                }
+            }
+            for(var i=0; i<accounts.length; i++)
+            {
+                var account = accounts[i];
+                var optionString = '<option class="multiSelectOptionTabs"';
+                if("ID" in account)
+                {
+                    var aId = account["ID"];
+                    optionString+=' value="'+aId+'"';
+                }
+                optionString+=">";
+                for(var j=0; j<accountHeaders.length; j++)
+                {
+                    var accountKey = accountHeaders[j];
+                    if(accountKey in account)
+                    {
+                        var value = account[accountKey];
+                        var spaces = 5;
+                        var allowedLen = tValueLengths[accountKey];
+                        var optionValueString = "";
+                        if(value!=null)
+                        {
+                            optionValueString+=value;
+                            var valString = ""+value;
+                            var valLen = valString.length;
+                            spaces += (allowedLen-valLen);
+                        }
+                        else
+                        {
+                            spaces+=allowedLen;
+                        }
+                        for(var k=0; k<spaces; k++)
+                        {
+                            optionValueString+="&nbsp;";
+                        }
+                        optionString+=optionValueString;
+                    }
+                }
+                optionString+="</option>";
+                $(selectListId).append(optionString);
+            }
+        }
+    }
+}

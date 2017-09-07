@@ -86,7 +86,7 @@ var displayTransactionSelect = function(selectListId, transactions) {
         for(var i=0; i<transactions.length; i++)
         {
             var transaction = transactions[i];
-            var optionString = '<option class="transactionOptions"';
+            var optionString = '<option class="multiSelectOptionTabs"';
             if("ID" in transaction)
             {
                 var tId = transaction["ID"];

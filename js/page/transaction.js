@@ -4,8 +4,8 @@ $(document).ready(function(){
   getAllTransactions.done(function(transactionData){
       if(transactionData!=null)
       {
-          var getTransactionsForWelcomePage = getTransactionsForUI(transactionData);
-          getTransactionsForWelcomePage.done(function(transactionDataForUI){
+          var getTransactionsForTransactionPage = getTransactionsForUI(transactionData);
+          getTransactionsForTransactionPage.done(function(transactionDataForUI){
               displayTransactionSelect('#transactionSelect',transactionDataForUI);
           });
       }
