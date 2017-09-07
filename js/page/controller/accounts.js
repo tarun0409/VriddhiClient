@@ -30,7 +30,7 @@ var getAccountUpdateObjectFromUI = function(nameId,ownerId,managerId,balanceId) 
       }
       if(ownerId!=null)
       {
-          var ownerPh = $(nameId).attr('placeholder');
+          var ownerPh = $(ownerId).attr('placeholder');
           var ownerValue = $(ownerId).val();
           if(ownerValue!=null && ownerValue!="" && (ownerPh!=ownerValue))
           {
@@ -50,7 +50,7 @@ var getAccountUpdateObjectFromUI = function(nameId,ownerId,managerId,balanceId) 
       {
           var balancePh = parseFloat($(balanceId).attr('placeholder'));
           var balanceValue = parseFloat($(balanceId).val());
-          if(balanceValue!=null && !isNaN(balanceValues) && balancePh!=null && !isNaN(balancePh) && (balancePh!=balanceValue))
+          if(balanceValue!=null && !isNaN(balanceValue) && balancePh!=null && !isNaN(balancePh) && (balancePh!=balanceValue))
           {
               accountObj["Account Balance"] = balanceValue;
           }

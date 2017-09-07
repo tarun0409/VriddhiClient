@@ -6,8 +6,6 @@ loginSubmit = function() {
     {
       formField = values[i];
       authObj[formField.name]=formField.value;
-      console.log(formField.name);
-      console.log(formField.value);
     }
     $.ajax({
     type: 'post',

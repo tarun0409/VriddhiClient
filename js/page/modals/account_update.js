@@ -1,11 +1,11 @@
 $(document).ready(function(){
-    var accountId = updateAccountId;
-    console.log(accountId);
+    var accountId = localStorage.getItem("updateAccountId");
     var getOneAccountById = getAccountsByIds(accountId, null);
     getOneAccountById.done(function(accountData){
         if(accountData!=null)
         {
-            var accountObj = accountData["accounts"];
+            var accountArray = accountData["accounts"];
+            var accountObj = accountArray[0];
             var accountFieldToTagIdMap = {
                 "Account Name":"#accountName",
                 "Account Owner":"#accountOwner",
@@ -29,7 +29,8 @@ var updateAccount = function()  {
     var accountObj = getAccountUpdateObjectFromUI('#accountName','#accountOwner','#accountManager','#accountBalance');
     var accounts = new Array();
     accounts.push(accountObj);
-    var updateOneAccount = putAccount(accounts);
+    var acctId = localStorage.getItem("updateAccountId");
+    var updateOneAccount = putAccount(acctId,accounts);
     updateOneAccount.done(function(response){
         if(response!=null)
         {
