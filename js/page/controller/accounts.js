@@ -57,3 +57,20 @@ var getAccountUpdateObjectFromUI = function(nameId,ownerId,managerId,balanceId) 
       }
       return accountObj;
 }
+
+
+var deleteAccountsByIds = function(accountSelectListId){
+    var selectedAccounts = $(accountSelectListId).val();
+    var deleteAccountsByGivenIds = deleteAccounts(selectedAccounts);
+    deleteAccountsByGivenIds.done(function(response){
+        if(response!=null)
+        {
+            var status = response["status"];
+            if(status=="SUCCESS")
+            {
+                alert("Accounts deleted successfully!");
+                window.location.reload();
+            }
+        }
+    });
+}
