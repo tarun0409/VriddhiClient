@@ -8,6 +8,7 @@
     <script src="../js/records/display/contacts.js" charset="utf-8"></script>
     <script src="../js/records/get/contacts.js" charset="utf-8"></script>
     <script src="../js/page/contact.js" charset="utf-8"></script>
+    <script src="../js/records/delete/contacts.js" charset="utf-8"></script>
     <script src="../js/page/controller/contacts.js" charset="utf-8"></script>
     <link rel="stylesheet" href="../css/transaction.css">
   </head>
@@ -19,5 +20,7 @@
     <a href="modals/ContactCreate.html">Create</a>
     <br>
     <button type="button" name="editContact" onclick="startUpdateProcess('#contactSelect')">Edit</button>
+    <br>
+    <button type="button" name="contactsDelete" onclick="deleteContactsByIds('#contactSelect')">Delete</button>
   </body>
 </html>

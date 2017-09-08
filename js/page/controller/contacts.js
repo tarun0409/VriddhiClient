@@ -111,3 +111,19 @@ var getContactUpdateObjectFromUI = function(nameId, primaryPhoneId, secondaryPho
 
       return contactObj;
 }
+
+var deleteContactsByIds = function(contactSelectListId){
+    var selectedContacts = $(contactSelectListId).val();
+    var deleteContactsByGivenIds = deleteContacts(selectedContacts);
+    deleteContactsByGivenIds.done(function(response){
+        if(response!=null)
+        {
+            var status = response["status"];
+            if(status=="SUCCESS")
+            {
+                alert("Contacts deleted successfully!");
+                window.location.reload();
+            }
+        }
+    });
+}

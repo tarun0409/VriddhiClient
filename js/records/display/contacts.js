@@ -65,7 +65,6 @@ var displayContactsSelectList = function(selectListId, contactObj){
                     }
                 }
             }
-            console.log(JSON.stringify(tValueLengths));
             for(var i=0; i<contacts.length; i++)
             {
                 var contact = contacts[i];
