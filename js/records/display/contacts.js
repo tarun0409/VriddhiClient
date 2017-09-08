@@ -36,6 +36,24 @@ var displayContactsSelectList = function(selectListId, contactObj){
         if(contacts!=null)
         {
             var tValueLengths = new Object();
+            for(var j=0; j<contactHeaders.length; j++)
+            {
+                var header = contactHeaders[j];
+                var headerValueString = ""+header;
+                var headerLen = headerValueString.length;
+                if(header in tValueLengths)
+                {
+                    var oldLen = tValueLengths[header];
+                    if(headerLen>oldLen)
+                    {
+                        tValueLengths[header] = headerLen;
+                    }
+                }
+                else
+                {
+                    tValueLengths[header] = headerLen;
+                }
+            }
             for(var i=0; i<contacts.length;i++)
             {
                 var contact = contacts[i];
@@ -65,6 +83,32 @@ var displayContactsSelectList = function(selectListId, contactObj){
                     }
                 }
             }
+            var headerOptionString = '<option class="multiSelectOptionTabs" disabled>';
+            for(var j=0; j<contactHeaders.length; j++)
+            {
+                var header = contactHeaders[j];
+                var spaces = 5;
+                var allowedLen = tValueLengths[header];
+                var optionValueString = "";
+                if(header!=null)
+                {
+                    optionValueString+=header;
+                    var valString = ""+header;
+                    var valLen = valString.length;
+                    spaces += (allowedLen-valLen);
+                }
+                else
+                {
+                    spaces+=allowedLen;
+                }
+                for(var k=0; k<spaces; k++)
+                {
+                    optionValueString+="&nbsp;";
+                }
+                headerOptionString+=optionValueString;
+            }
+            headerOptionString+="</option>";
+            $(selectListId).append(headerOptionString);
             for(var i=0; i<contacts.length; i++)
             {
                 var contact = contacts[i];

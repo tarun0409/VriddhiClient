@@ -53,6 +53,24 @@ var displayTransactionSelect = function(selectListId, transactions) {
     if(transactions!=null)
     {
         var tValueLengths = new Object();
+        for(var j=0; j<transactionHeaders.length; j++)
+        {
+            var header = transactionHeaders[j];
+            var headerValueString = ""+header;
+            var headerLen = headerValueString.length;
+            if(header in tValueLengths)
+            {
+                var oldLen = tValueLengths[header];
+                if(headerLen>oldLen)
+                {
+                    tValueLengths[header] = headerLen;
+                }
+            }
+            else
+            {
+                tValueLengths[header] = headerLen;
+            }
+        }
         for(var i=0; i<transactions.length;i++)
         {
             var transaction = transactions[i];
@@ -83,6 +101,32 @@ var displayTransactionSelect = function(selectListId, transactions) {
 
             }
         }
+        var headerOptionString = '<option class="multiSelectOptionTabs" disabled>';
+        for(var j=0; j<transactionHeaders.length; j++)
+        {
+            var header = transactionHeaders[j];
+            var spaces = 5;
+            var allowedLen = tValueLengths[header];
+            var optionValueString = "";
+            if(header!=null)
+            {
+                optionValueString+=header;
+                var valString = ""+header;
+                var valLen = valString.length;
+                spaces += (allowedLen-valLen);
+            }
+            else
+            {
+                spaces+=allowedLen;
+            }
+            for(var k=0; k<spaces; k++)
+            {
+                optionValueString+="&nbsp;";
+            }
+            headerOptionString+=optionValueString;
+        }
+        headerOptionString+="</option>";
+        $(selectListId).append(headerOptionString);
         for(var i=0; i<transactions.length; i++)
         {
             var transaction = transactions[i];
@@ -123,6 +167,17 @@ var displayTransactionSelect = function(selectListId, transactions) {
                         optionValueString+="&nbsp;";
                     }
                     optionString+=optionValueString;
+                }
+                else
+                {
+                    var spaces = 5;
+                    var allowedLen = tValueLengths[transactionKey];
+                    spaces+=allowedLen;
+                    for(var k=0; k<spaces; k++)
+                    {
+                        optionString+="&nbsp;";
+                    }
+
                 }
             }
             optionString+="</option>";

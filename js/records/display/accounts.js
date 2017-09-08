@@ -36,6 +36,24 @@ var displayAccountsSelectList = function(selectListId, accountObj){
         if(accounts!=null)
         {
             var tValueLengths = new Object();
+            for(var j=0; j<accountHeaders.length; j++)
+            {
+                var header = accountHeaders[j];
+                var headerValueString = ""+header;
+                var headerLen = headerValueString.length;
+                if(header in tValueLengths)
+                {
+                    var oldLen = tValueLengths[header];
+                    if(headerLen>oldLen)
+                    {
+                        tValueLengths[header] = headerLen;
+                    }
+                }
+                else
+                {
+                    tValueLengths[header] = headerLen;
+                }
+            }
             for(var i=0; i<accounts.length;i++)
             {
                 var account = accounts[i];
@@ -65,6 +83,32 @@ var displayAccountsSelectList = function(selectListId, accountObj){
                     }
                 }
             }
+            var headerOptionString = '<option class="multiSelectOptionTabs" disabled>';
+            for(var j=0; j<accountHeaders.length; j++)
+            {
+                var header = accountHeaders[j];
+                var spaces = 5;
+                var allowedLen = tValueLengths[header];
+                var optionValueString = "";
+                if(header!=null)
+                {
+                    optionValueString+=header;
+                    var valString = ""+header;
+                    var valLen = valString.length;
+                    spaces += (allowedLen-valLen);
+                }
+                else
+                {
+                    spaces+=allowedLen;
+                }
+                for(var k=0; k<spaces; k++)
+                {
+                    optionValueString+="&nbsp;";
+                }
+                headerOptionString+=optionValueString;
+            }
+            headerOptionString+="</option>";
+            $(selectListId).append(headerOptionString);
             for(var i=0; i<accounts.length; i++)
             {
                 var account = accounts[i];
@@ -100,6 +144,17 @@ var displayAccountsSelectList = function(selectListId, accountObj){
                             optionValueString+="&nbsp;";
                         }
                         optionString+=optionValueString;
+                    }
+                    else
+                    {
+                        var spaces = 5;
+                        var allowedLen = tValueLengths[accountKey];
+                        spaces+=allowedLen;
+                        for(var k=0; k<spaces; k++)
+                        {
+                            optionString+="&nbsp;";
+                        }
+
                     }
                 }
                 optionString+="</option>";
