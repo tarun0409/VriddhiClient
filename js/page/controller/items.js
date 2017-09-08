@@ -30,3 +30,19 @@ var getItemUpdateObjectFromUI = function(itemTypeId,itemNameId) {
       }
       return itemObj;
 }
+
+var deleteItemsByIds = function(itemSelectListId){
+    var selectedItems = $(itemSelectListId).val();
+    var deleteItemsByGivenIds = deleteItems(selectedItems);
+    deleteItemsByGivenIds.done(function(response){
+        if(response!=null)
+        {
+            var status = response["status"];
+            if(status=="SUCCESS")
+            {
+                alert("Items deleted successfully!");
+                window.location.reload();
+            }
+        }
+    });
+}
