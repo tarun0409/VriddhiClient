@@ -10,7 +10,7 @@ var insertItem = function() {
             if(status=="SUCCESS")
             {
                 alert("Item inserted successfully!");
-                window.location.reload();
+                window.location.replace("../Item.html");
             }
         }
     });
