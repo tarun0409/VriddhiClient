@@ -50,3 +50,64 @@ var getContactObjectFromUI = function(nameId, primaryPhoneId, secondaryPhoneId, 
       }
       return contactObj;
 }
+
+var getContactUpdateObjectFromUI = function(nameId, primaryPhoneId, secondaryPhoneId, emailId, primaryAddressId, secondaryAddressId) {
+      var contactObj = new Object();
+      if(nameId!=null)
+      {
+          var phValue = $(nameId).attr('placeholder');
+          var value = $(nameId).val();
+          if(value!=null && value!="" && (phValue!=value))
+          {
+              contactObj["Contact Name"] = value;
+          }
+      }
+      if(primaryPhoneId!=null)
+      {
+          var phValue = $(primaryPhoneId).attr('placeholder');
+          var value = $(primaryPhoneId).val();
+          if(value!=null && value!="" && (phValue!=value))
+          {
+              contactObj["Primary Phone"] = value;
+          }
+      }
+      if(secondaryPhoneId!=null)
+      {
+          var phValue = $(secondaryPhoneId).attr('placeholder');
+          var value = $(secondaryPhoneId).val();
+          if(value!=null && value!="" && (phValue!=value))
+          {
+              contactObj["Secondary Phone"] = value;
+          }
+      }
+      if(emailId!=null)
+      {
+          var phValue = $(emailId).attr('placeholder');
+          var value = $(emailId).val();
+          if(value!=null && value!="" && (phValue!=value))
+          {
+              contactObj["Email"] = value;
+          }
+      }
+      if(primaryAddressId!=null)
+      {
+          var phValue = $(primaryAddressId).attr('placeholder');
+          var value = $(primaryAddressId).val();
+          if(value!=null && value!="" && (phValue!=value))
+          {
+              contactObj["Primary Address"] = value;
+          }
+      }
+      if(secondaryAddressId!=null)
+      {
+          var phValue = $(secondaryAddressId).attr('placeholder');
+          var value = $(secondaryAddressId).val();
+          if(value!=null && value!="" && (phValue!=value))
+          {
+              contactObj["Secondary Address"] = value;
+          }
+      }
+
+
+      return contactObj;
+}
