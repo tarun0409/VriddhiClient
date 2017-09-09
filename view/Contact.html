@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Contacts</title>
+    <script src="../ext_js/jquery-3.2.1.min.js"></script>
+    <script src="../js/utils/global_variables.js" charset="utf-8"></script>
+    <script src="../js/model/http/get_records.js" charset="utf-8"></script>
+    <script src="../js/model/records/record_update.js" charset="utf-8"></script>
+    <script src="../js/controller/display/select_display.js" charset="utf-8"></script>
+    <script src="../js/model/http/delete_records.js" charset="utf-8"></script>
+    <script src="../js/model/records/record_delete.js" charset="utf-8"></script>
+    <script src="../js/controller/page_load/main/contact_main.js" charset="utf-8"></script>
+    <link rel="stylesheet" href="../css/transaction.css">
+  </head>
+  <body>
+    <select class="displayRecords" name="contactsView" size="10" id="contactSelect" multiple>
+
+    </select>
+    <br><br>
+    <a href="modals/ContactCreate.html">Create</a>
+    <br>
+    <button type="button" name="editContact" onclick="startUpdateProcess('Contact','#contactSelect')">Edit</button>
+    <br>
+    <button type="button" name="contactsDelete" onclick="deleteRecordsByIds('contacts','#contactSelect')">Delete</button>
+  </body>
+</html>

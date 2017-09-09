@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Transactions</title>
+    <script src="../ext_js/jquery-3.2.1.min.js"></script>
+    <script src="../js/utils/global_variables.js" charset="utf-8"></script>
+    <script src="../js/model/http/get_records.js" charset="utf-8"></script>
+    <script src="../js/model/data.js" charset="utf-8"></script>
+    <script src="../js/controller/display/select_display.js" charset="utf-8"></script>
+    <script src="../js/model/http/delete_records.js" charset="utf-8"></script>
+    <script src="../js/model/records/record_delete.js" charset="utf-8"></script>
+    <script src="../js/controller/page_load/main/transaction_main.js" charset="utf-8"></script>
+    <link rel="stylesheet" href="../css/transaction.css">
+  </head>
+  <body>
+    <select class="displayRecords" name="transactionsView" size="10" id="transactionSelect" multiple>
+
+    </select>
+    <br>
+    <a href="modals/TransactionCreate.html" class="button">Create Transaction</a>
+    <br>
+    <button type="button" name="transactionsDelete" onclick="deleteRecordsByIds('transactions','#transactionSelect')">Delete</button>
+  </body>
+</html>

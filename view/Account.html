@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Accounts</title>
+    <script src="../ext_js/jquery-3.2.1.min.js"></script>
+    <script src="../js/utils/global_variables.js" charset="utf-8"></script>
+    <script src="../js/model/http/get_records.js" charset="utf-8"></script>
+    <script src="../js/model/records/record_update.js" charset="utf-8"></script>
+    <script src="../js/controller/display/select_display.js" charset="utf-8"></script>
+    <script src="../js/model/http/delete_records.js" charset="utf-8"></script>
+    <script src="../js/model/records/record_delete.js" charset="utf-8"></script>
+    <script src="../js/controller/page_load/main/account_main.js" charset="utf-8"></script>
+    <link rel="stylesheet" href="../css/transaction.css">
+  </head>
+  <body>
+    <select class="displayRecords" name="accountsView" size="10" id="accountSelect" multiple>
+
+    </select>
+    <br><br>
+    <a href="modals/AccountCreate.html">Create</a>
+    <br>
+    <button type="button" name="editAccount" onclick="startUpdateProcess('Account','#accountSelect')">Edit</button>
+    <br>
+    <button type="button" name="accountsDelete" onclick="deleteRecordsByIds('accounts','#accountSelect')">Delete</button>
+  </body>
+</html>

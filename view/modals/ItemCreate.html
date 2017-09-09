@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Create Account</title>
+    <script src="../../ext_js/jquery-3.2.1.min.js"></script>
+    <script src="../../js/utils/global_variables.js" charset="utf-8"></script>
+    <script src="../../js/controller/get/record_create.js" charset="utf-8"></script>
+    <script src="../../js/model/http/post_records.js" charset="utf-8"></script>
+    <script src="../../js/model/records/record_create.js" charset="utf-8"></script>
+  </head>
+  <body>
+
+    <p>Item Type:</p>
+    <select class="displayItemTypes" name="Item Type" id="itemType">
+      <option value="Saree">Saree</option>
+      <option value="Chudidhar">Chudidhar</option>
+    </select>
+    <p>Item Name:</p><input type="text" id="itemName" name="Item Name"><br>
+    <br><br>
+    <button type="button" name="aInsert" onclick="insertItem('Item')">Create</button>
+  </body>
+</html>

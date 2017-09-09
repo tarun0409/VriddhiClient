@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Create Account</title>
+    <script src="../../ext_js/jquery-3.2.1.min.js"></script>
+    <script src="../../js/utils/global_variables.js" charset="utf-8"></script>
+    <script src="../../js/controller/get/record_create.js" charset="utf-8"></script>
+    <script src="../../js/model/http/post_records.js" charset="utf-8"></script>
+    <script src="../../js/model/records/record_create.js" charset="utf-8"></script>
+  </head>
+  <body>
+
+    <p>Account Name:</p><input type="text" id="accountName" name="Account Name"><br>
+    <p>Account Owner:</p><input type="text" id="accountOwner" name="Account Owner"><br>
+    <p>Account Manager:</p><input type="text" id="accountManager" name="Account Manager"><br>
+    <p>Initial Balance:</p><input type="text" id="accountBalance" name="Account Balance"><br>
+    <br><br>
+    <button type="button" name="aInsert" onclick="insertAccount('Account')">Create</button>
+  </body>
+</html>
