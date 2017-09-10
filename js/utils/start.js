@@ -1,5 +1,6 @@
 $(document).ready(function()
 {
+  $('#myModal').modal({ show: false})
   $.get("http://localhost:8080/Vriddhi/v1/authentication", function(data, status){
 
       status = data["status"]
@@ -9,7 +10,7 @@ $(document).ready(function()
       }
       else
       {
-        window.location.replace("view/Login.html");
+        $('#loginModal').modal('show');
       }
 });
 

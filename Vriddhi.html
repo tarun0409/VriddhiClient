@@ -1,9 +1,36 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Slab" rel="stylesheet">
     <script src="ext_js/jquery-3.2.1.min.js"></script>
+    <link rel="stylesheet" href="ext_js/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/login.css">
+    <script src="ext_js/bootstrap/js/bootstrap.min.js" charset="utf-8"></script>
+    <script src="js/utils/start.js"></script>
+    <script src="js/utils/login.js"></script>
   </head>
   <body>
-    <script src="js/utils/start.js"></script>
+    <div class="modal fade" id="loginModal" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <p class="myFormHeading"> Vriddhi Login</p>
+        </div>
+        <div class="modal-body">
+          <form id="loginForm">
+            <p class="myFormText">User Name</p>
+            <input type="text" name="user_name" class="form-control myFormElements">
+            <p class="myFormText">Password</p>
+            <input type="password" name="password" class="form-control myFormElements">
+            <p><button type="button" name="submit" onclick="loginSubmit()" class="btn-success form-control myFormText">Submit</button></p>
+          </form>
+        </div>
+      </div>
+
+    </div>
+  </div>
   </body>
 </html>

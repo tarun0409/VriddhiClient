@@ -1,14 +1,8 @@
-table, th, td {
-   border: 1px solid black;
-   align-items: center;
+.profit-text {
+    font-size: 20px;
+    margin-top: 70px;
 }
-table th,td
-{
-  text-align: center;
-}
-.BUY {
-  background-color:#D0F3BF
-}
-.SELL {
-  background-color:#FFDCDC
+.welcome-heading {
+    margin-bottom: 50px;
+    text-align: center;
 }

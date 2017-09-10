@@ -1,0 +1,15 @@
+.modal {
+  text-align: center;
+}
+.myFormElements {
+  margin-bottom: 20px;
+}
+
+.myFormText {
+    font-family: 'Roboto Slab', serif;
+    font-size: 15px;
+}
+
+.myFormHeading {
+  font-size: 20px;
+}

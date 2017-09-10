@@ -4,6 +4,8 @@
     <meta charset="utf-8">
     <title>Vriddhi</title>
     <script src="../ext_js/jquery-3.2.1.min.js"></script>
+    <link rel="stylesheet" href="../ext_js/bootstrap/css/bootstrap.min.css">
+    <script src="../ext_js/bootstrap/js/bootstrap.min.js" charset="utf-8"></script>
     <script src="../js/model/http/get_records.js" charset="utf-8"></script>
     <script src="../js/utils/global_variables.js" charset="utf-8"></script>
     <script src="../js/model/data.js" charset="utf-8"></script>
@@ -12,8 +14,40 @@
     <link rel="stylesheet" href="../css/welcome.css">
   </head>
   <body>
-    <table id="l10t">
-    </table>
-    <p id="profit"></p>
+    <nav class="navbar navbar-inverse">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">Vriddhi</a>
+        </div>
+        <ul class="nav navbar-nav">
+          <li class="active"><a href="Welcome.html">Home</a></li>
+          <li><a href="Account.html">Accounts</a></li>
+          <li><a href="Contact.html">Contacts</a></li>
+          <li><a href="Item.html">Items</a></li>
+          <li><a href="Transaction.html">Transactions</a></li>
+        </ul>
+      </div>
+    </nav>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+            <h3 class="welcome-heading">Welcome to Vriddhi <small>Your one stop for all your business accounting needs!</small></h3>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+            <h4>Just to brief you, here are the last 10 transactions you have made.</h4>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <table id="l10t" class="table table-striped">
+          </table>
+          <p id="profit" class="profit-text"></p>
+        </div>
+      </div>
+    </div>
+
+
   </body>
 </html>
