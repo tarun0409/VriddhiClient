@@ -32,6 +32,40 @@ var startAccountUpdateProcess = function(modalId,selectListId){
   $(modalId).modal('show');
 }
 
+var startContactUpdateProcess = function(modalId,selectListId){
+  var selectedRecord = $(selectListId).val();
+  updateRecordId = selectedRecord[0];
+  var contactIdArray = new Array();
+  contactIdArray.push(updateRecordId);
+  var getOneContactById = getRecordsByIds("contacts",contactIdArray, null);
+  getOneContactById.done(function(contactData){
+      if(contactData!=null)
+      {
+        var contactArray = contactData["contacts"];
+        var contactObj = contactArray[0];
+        var contactFieldToTagIdMap = {
+            "Contact Name":"#updateContactName",
+            "Primary Phone":"#updatePrimaryPhone",
+            "Secondary Phone":"#updateSecondaryPhone",
+            "Email":"#updateEmail",
+            "Primary Address":"#updatePrimaryAddress",
+            "Secondary Address":"#updateSecondaryAddress"
+        };
+        for(var i=0; i<contactHeaders.length; i++)
+        {
+            var contactHeader = contactHeaders[i];
+            var value = contactObj[contactHeader];
+            if(value!=null)
+            {
+                var tagId = contactFieldToTagIdMap[contactHeader];
+                $(tagId).attr("placeholder",value);
+            }
+        }
+      }
+  });
+  $(modalId).modal('show');
+}
+
 var updateAccount = function(moduleName)  {
     var accountObj = getAccountUpdateObjectFromUI('#updateAccountName','#updateAccountOwner','#updateAccountManager','#updateAccountBalance');
     var accounts = new Array();
@@ -51,11 +85,11 @@ var updateAccount = function(moduleName)  {
     });
 }
 
-var updateContact = function()  {
-    var contactObj = getContactUpdateObjectFromUI('#contactName','#primaryPhone','#secondaryPhone','#email','#primaryAddress','#secondaryAddress');
+var updateContact = function(moduleName)  {
+    var contactObj = getContactUpdateObjectFromUI('#updateContactName','#updatePrimaryPhone','#updateSecondaryPhone','#updateEmail','#updatePrimaryAddress','#updateSecondaryAddress');
     var contacts = new Array();
     contacts.push(contactObj);
-    var cntId = localStorage.getItem("updateRecordId");
+    var cntId = updateRecordId;
     var updateOneContact = putRecord("contacts",cntId,contacts);
     updateOneContact.done(function(response){
         if(response!=null)
@@ -64,7 +98,7 @@ var updateContact = function()  {
             if(status=="SUCCESS")
             {
                 alert("Contact updated successfully!");
-                window.location.replace("../Contact.html");
+                window.location.replace(moduleName+".html");
             }
         }
     });

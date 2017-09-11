@@ -4,24 +4,112 @@
     <meta charset="utf-8">
     <title>Contacts</title>
     <script src="../ext_js/jquery-3.2.1.min.js"></script>
+    <link rel="stylesheet" href="../ext_js/bootstrap/css/bootstrap.min.css">
+    <script src="../ext_js/bootstrap/js/bootstrap.min.js" charset="utf-8"></script>
     <script src="../js/utils/global_variables.js" charset="utf-8"></script>
     <script src="../js/model/http/get_records.js" charset="utf-8"></script>
     <script src="../js/model/records/record_update.js" charset="utf-8"></script>
     <script src="../js/controller/display/select_display.js" charset="utf-8"></script>
     <script src="../js/model/http/delete_records.js" charset="utf-8"></script>
     <script src="../js/model/records/record_delete.js" charset="utf-8"></script>
+    <script src="../js/controller/get/record_create.js" charset="utf-8"></script>
+    <script src="../js/model/http/post_records.js" charset="utf-8"></script>
+    <script src="../js/model/records/record_create.js" charset="utf-8"></script>
+    <script src="../js/model/records/record_update.js" charset="utf-8"></script>
+    <script src="../js/controller/get/record_update.js" charset="utf-8"></script>
+    <script src="../js/model/http/put_records.js" charset="utf-8"></script>
     <script src="../js/controller/page_load/main/contact_main.js" charset="utf-8"></script>
     <link rel="stylesheet" href="../css/module.css">
+    <link rel="stylesheet" href="../css/modal_form.css">
   </head>
   <body>
-    <select class="displayRecords" name="contactsView" size="10" id="contactSelect" multiple>
+    <div class="modal fade" id="createContactModal" role="dialog">
+    <div class="modal-dialog">
 
-    </select>
-    <br><br>
-    <a href="modals/ContactCreate.html">Create</a>
-    <br>
-    <button type="button" name="editContact" onclick="startUpdateProcess('Contact','#contactSelect')">Edit</button>
-    <br>
-    <button type="button" name="contactsDelete" onclick="deleteRecordsByIds('contacts','#contactSelect')">Delete</button>
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <p class="myFormHeading">Create Account</p>
+        </div>
+        <div class="modal-body">
+          <p class="myFormText">Contact Name:</p>
+          <input type="text" id="contactName" name="Contact Name" class="form-control myFormElements"><br>
+          <p class="myFormText">Primary Phone:</p>
+          <input type="text" id="primaryPhone" name="Primary Phone" class="form-control myFormElements"><br>
+          <p class="myFormText">Secondary Phone:</p>
+          <input type="text" id="secondaryPhone" name="Secondary Phone" class="form-control myFormElements"><br>
+          <p class="myFormText">Email:</p>
+          <input type="text" id="email" name="Email" class="form-control myFormElements"><br>
+          <p class="myFormText">Primary Address:</p>
+          <input type="text" id="primaryAddress" name="Primary Address" class="form-control myFormElements"><br>
+          <p class="myFormText">Secondary Address:</p>
+          <input type="text" id="secondaryAddress" name="Secondary Address" class="form-control myFormElements"><br>
+          <button type="button" class="btn-success form-control submit_button_text" name="cInsert" onclick="insertContact('Contact')">Create</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <div class="modal fade" id="updateContactModal" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <p class="myFormHeading">Update Account</p>
+      </div>
+      <div class="modal-body">
+        <p class="myFormText">Contact Name:</p>
+        <input type="text" id="updateContactName" name="Contact Name" class="form-control myFormElements"><br>
+        <p class="myFormText">Primary Phone:</p>
+        <input type="text" id="updatePrimaryPhone" name="Primary Phone" class="form-control myFormElements"><br>
+        <p class="myFormText">Secondary Phone:</p>
+        <input type="text" id="updateSecondaryPhone" name="Secondary Phone" class="form-control myFormElements"><br>
+        <p class="myFormText">Email:</p>
+        <input type="text" id="updateEmail" name="Email" class="form-control myFormElements"><br>
+        <p class="myFormText">Primary Address:</p>
+        <input type="text" id="updatePrimaryAddress" name="Primary Address" class="form-control myFormElements"><br>
+        <p class="myFormText">Secondary Address:</p>
+        <input type="text" id="updateSecondaryAddress" name="Secondary Address" class="form-control myFormElements"><br>
+        <p><button type="button" class="btn-success form-control submit_button_text" name="aUpdate" onclick="updateContact('Contact')">Update</button></p>
+      </div>
+    </div>
+
+    </div>
+  </div>
+    <nav class="navbar navbar-inverse">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="#">Vriddhi</a>
+        </div>
+        <ul class="nav navbar-nav">
+          <li><a href="Welcome.html">Home</a></li>
+          <li><a href="Account.html">Accounts</a></li>
+          <li class="active"><a href="Contact.html">Contacts</a></li>
+          <li><a href="Item.html">Items</a></li>
+          <li><a href="Transaction.html">Transactions</a></li>
+        </ul>
+      </div>
+    </nav>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <select class="displayRecords form-control" name="contactsView" size="10" id="contactSelect" multiple>
+
+          </select>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <button type="button" name="createAccount" class="button green-button" onclick="startCreateProcess('#createContactModal')">Create</button>
+          <button type="button" name="editAccount" class="button blue-button" onclick="startContactUpdateProcess('#updateContactModal','#contactSelect')">Edit</button>
+          <button type="button" name="accountsDelete" class="button red-button" onclick="deleteRecordsByIds('contacts','#contactSelect')">Delete</button>
+        </div>
+      </div>
+    </div>
   </body>
 </html>

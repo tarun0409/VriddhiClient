@@ -20,7 +20,7 @@ var insertAccount = function(moduleName) {
     });
 }
 
-var insertContact = function() {
+var insertContact = function(moduleName) {
     var contactObj = getContactObjectFromUI('#contactName','#primaryPhone','#secondaryPhone','#email','#primaryAddress','#secondaryAddress');
     var contacts = new Array();
     contacts.push(contactObj);
@@ -32,7 +32,7 @@ var insertContact = function() {
             if(status=="SUCCESS")
             {
                 alert("Contact inserted successfully!");
-                window.location.replace("../Contact.html");
+                window.location.replace(moduleName+".html");
             }
         }
     });
