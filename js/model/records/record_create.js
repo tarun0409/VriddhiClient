@@ -1,3 +1,7 @@
+var startCreateProcess = function(modalId)
+{
+    $(modalId).modal('show');
+}
 var insertAccount = function(moduleName) {
     var accountObj = getAccountObjectFromUI('#accountName','#accountOwner','#accountManager','#accountBalance');
     var accounts = new Array();
@@ -10,7 +14,7 @@ var insertAccount = function(moduleName) {
             if(status=="SUCCESS")
             {
                 alert("Record inserted successfully!");
-                window.location.replace("../"+moduleName+".html");
+                window.location.replace(moduleName+".html");
             }
         }
     });

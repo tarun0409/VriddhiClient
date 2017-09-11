@@ -1,4 +1,4 @@
-var displayTransactionTable = function(tableId, transactions)
+var displayTransactionTable = function(tableHeadId,tableBodyId, transactions)
 {
   var headerString = "<tr>";
   for(var k=0; k<transactionHeaders.length; k++)
@@ -7,7 +7,7 @@ var displayTransactionTable = function(tableId, transactions)
     headerString+="<th>"+header+"</th>";
   }
   headerString+="</tr>";
-  $(tableId).append(headerString);
+  $(tableHeadId).append(headerString);
   for(var i=0; i<transactions.length; i++)
   {
     var transaction = transactions[i];
@@ -17,8 +17,13 @@ var displayTransactionTable = function(tableId, transactions)
         var val = transaction["Transaction Type"];
         if(val!=null)
         {
+            var typeClass = "danger"
+            if(val=="SELL")
+            {
+                typeClass="success"
+            }
             rowString+=' class="';
-            rowString+=val+'"';
+            rowString+=typeClass+'"';
         }
     }
     dataString = "";
@@ -43,7 +48,7 @@ var displayTransactionTable = function(tableId, transactions)
         dataString+=myData;
     }
     rowString+=">"+dataString+"</tr>";
-    $(tableId).append(rowString);
+    $(tableBodyId).append(rowString);
 
   }
 }

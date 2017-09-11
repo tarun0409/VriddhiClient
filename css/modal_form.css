@@ -1,13 +1,14 @@
-.modal {
-  text-align: center;
+.submit_button_text {
+  margin-bottom: 10px;
 }
+
 .myFormElements {
   margin-bottom: 20px;
 }
 
 .myFormText {
     font-family: 'Roboto Slab', serif;
-    font-size: 15px;
+    font-size: 20px;
 }
 
 .myFormHeading {

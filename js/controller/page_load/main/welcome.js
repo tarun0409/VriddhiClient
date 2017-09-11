@@ -6,7 +6,7 @@ $(document).ready(function(){
       {
           var getTransactionsForWelcomePage = getTransactionsForUI(transactionData);
           getTransactionsForWelcomePage.done(function(transactionDataForUI){
-              displayTransactionTable('#l10t',transactionDataForUI);
+              displayTransactionTable('#l10thead','#l10tbody',transactionDataForUI);
           });
       }
   });

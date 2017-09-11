@@ -1,18 +1,42 @@
-var startUpdateProcess = function(moduleName,selectListId)
-{
-    var selectedRecord = $(selectListId).val();
-    if(selectedRecord!=null && selectedRecord.length==1)
-    {
-        localStorage.setItem("updateRecordId",selectedRecord[0]);
-        window.location.href = 'modals/'+moduleName+'Update.html';
-    }
+var updateRecordId = 0;
+
+var startAccountUpdateProcess = function(modalId,selectListId){
+  var selectedRecord = $(selectListId).val();
+  updateRecordId = selectedRecord[0];
+  var accountIdArray = new Array();
+  accountIdArray.push(updateRecordId);
+  var getOneAccountById = getRecordsByIds("accounts",accountIdArray, null);
+  getOneAccountById.done(function(accountData){
+      if(accountData!=null)
+      {
+          var accountArray = accountData["accounts"];
+          var accountObj = accountArray[0];
+          var accountFieldToTagIdMap = {
+              "Account Name":"#updateAccountName",
+              "Account Owner":"#updateAccountOwner",
+              "Account Manager":"#updateAccountManager",
+              "Account Balance":"#updateAccountBalance"
+          };
+          for(var i=0; i<accountHeaders.length; i++)
+          {
+              var accountHeader = accountHeaders[i];
+              var value = accountObj[accountHeader];
+              if(value!=null)
+              {
+                  var tagId = accountFieldToTagIdMap[accountHeader];
+                  $(tagId).attr("placeholder",value);
+              }
+          }
+      }
+  });
+  $(modalId).modal('show');
 }
 
 var updateAccount = function(moduleName)  {
-    var accountObj = getAccountUpdateObjectFromUI('#accountName','#accountOwner','#accountManager','#accountBalance');
+    var accountObj = getAccountUpdateObjectFromUI('#updateAccountName','#updateAccountOwner','#updateAccountManager','#updateAccountBalance');
     var accounts = new Array();
     accounts.push(accountObj);
-    var acctId = localStorage.getItem("updateRecordId");
+    var acctId = updateRecordId;
     var updateOneAccount = putRecord("accounts",acctId,accounts);
     updateOneAccount.done(function(response){
         if(response!=null)
@@ -21,7 +45,7 @@ var updateAccount = function(moduleName)  {
             if(status=="SUCCESS")
             {
                 alert("Account updated successfully!");
-                window.location.replace("../"+moduleName+".html");
+                window.location.replace(moduleName+".html");
             }
         }
     });
