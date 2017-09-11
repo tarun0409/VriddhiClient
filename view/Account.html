@@ -33,17 +33,15 @@
           <p class="myFormHeading">Create Account</p>
         </div>
         <div class="modal-body">
-          <form id="loginForm">
-            <p class="myFormText">Account Name:</p>
-            <input type="text" id="accountName" name="Account Name" class="form-control myFormElements"><br>
-            <p class="myFormText">Account Owner:</p>
-            <input type="text" id="accountOwner" name="Account Owner" class="form-control myFormElements"><br>
-            <p class="myFormText">Account Manager:</p>
-            <input type="text" id="accountManager" name="Account Manager" class="form-control myFormElements"><br>
-            <p class="myFormText">Initial Balance:</p>
-            <input type="text" id="accountBalance" name="Account Balance" class="form-control myFormElements"><br>
-            <p><button type="button" class="btn-success form-control submit_button_text" name="aInsert" onclick="insertAccount('Account')">Create</button></p>
-          </form>
+          <p class="myFormText">Account Name:</p>
+          <input type="text" id="accountName" name="Account Name" class="form-control myFormElements"><br>
+          <p class="myFormText">Account Owner:</p>
+          <input type="text" id="accountOwner" name="Account Owner" class="form-control myFormElements"><br>
+          <p class="myFormText">Account Manager:</p>
+          <input type="text" id="accountManager" name="Account Manager" class="form-control myFormElements"><br>
+          <p class="myFormText">Initial Balance:</p>
+          <input type="text" id="accountBalance" name="Account Balance" class="form-control myFormElements"><br>
+          <p><button type="button" class="btn-success form-control submit_button_text" name="aInsert" onclick="insertAccount()">Create</button></p>
         </div>
       </div>
 
@@ -69,7 +67,7 @@
           <input type="text" id="updateAccountManager" name="Account Manager" class="form-control myFormElements"><br>
           <p class="myFormText">Initial Balance:</p>
           <input type="text" id="updateAccountBalance" name="Account Balance" class="form-control myFormElements"><br>
-          <p><button type="button" class="btn-success form-control submit_button_text" name="aUpdate" onclick="updateAccount('Account')">Update</button></p>
+          <p><button type="button" class="btn-success form-control submit_button_text" name="aUpdate" onclick="updateAccount('Account)">Update</button></p>
       </div>
     </div>
 

@@ -66,7 +66,36 @@ var startContactUpdateProcess = function(modalId,selectListId){
   $(modalId).modal('show');
 }
 
-var updateAccount = function(moduleName)  {
+var startItemUpdateProcess = function(modalId,selectListId){
+  var selectedRecord = $(selectListId).val();
+  updateRecordId = selectedRecord[0];
+  var itemIdArray = new Array();
+  itemIdArray.push(updateRecordId);
+  var getOneItemById = getRecordsByIds("items",itemIdArray, null);
+  getOneItemById.done(function(itemData){
+      if(itemData!=null)
+      {
+          var itemArray = itemData["items"];
+          var itemObj = itemArray[0];
+          var itemFieldToTagIdMap = {
+              "Saree":"#saree",
+              "Chudidhar":"#chudidhar",
+              "Item Name":"#updateItemName"
+          };
+          var itemUpdateHeaders = ["Item Type","Item Name"];
+          var itemType = itemObj["Item Type"];
+          localStorage.setItem("selectedItemType",itemType);
+          var typeTagId = itemFieldToTagIdMap[itemType];
+          $(typeTagId).attr("selected","");
+          var itemName = itemObj["Item Name"];
+          var nameTagId = itemFieldToTagIdMap["Item Name"];
+          $(nameTagId).attr("placeholder",itemName);
+      }
+  });
+  $(modalId).modal('show');
+}
+
+var updateAccount = function()  {
     var accountObj = getAccountUpdateObjectFromUI('#updateAccountName','#updateAccountOwner','#updateAccountManager','#updateAccountBalance');
     var accounts = new Array();
     accounts.push(accountObj);
@@ -79,13 +108,13 @@ var updateAccount = function(moduleName)  {
             if(status=="SUCCESS")
             {
                 alert("Account updated successfully!");
-                window.location.replace(moduleName+".html");
+                window.location.replace("Account.html");
             }
         }
     });
 }
 
-var updateContact = function(moduleName)  {
+var updateContact = function()  {
     var contactObj = getContactUpdateObjectFromUI('#updateContactName','#updatePrimaryPhone','#updateSecondaryPhone','#updateEmail','#updatePrimaryAddress','#updateSecondaryAddress');
     var contacts = new Array();
     contacts.push(contactObj);
@@ -98,17 +127,17 @@ var updateContact = function(moduleName)  {
             if(status=="SUCCESS")
             {
                 alert("Contact updated successfully!");
-                window.location.replace(moduleName+".html");
+                window.location.replace("Contact.html");
             }
         }
     });
 }
 
 var updateItem = function()  {
-    var itemObj = getItemUpdateObjectFromUI('#itemType','#itemName');
+    var itemObj = getItemUpdateObjectFromUI('#updateItemType','#updateItemName');
     var items = new Array();
     items.push(itemObj);
-    var itemId = localStorage.getItem("updateRecordId");
+    var itemId = updateRecordId;
     var updateOneItem = putRecord("items",itemId,items);
     updateOneItem.done(function(response){
         if(response!=null)
@@ -117,7 +146,7 @@ var updateItem = function()  {
             if(status=="SUCCESS")
             {
                 alert("Item updated successfully!");
-                window.location.replace("../Item.html");
+                window.location.replace("Item.html");
             }
         }
     });

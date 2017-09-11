@@ -32,7 +32,6 @@ var displayRecordNamesInSelectList = function(moduleName, selectListIds, recordN
 
 
 var displayRecordsSelectList = function(moduleName,selectListId, recordObj){
-    //console.log(JSON.stringify(recordObj));
     if(recordObj!=null)
     {
         var records = recordObj[moduleName];

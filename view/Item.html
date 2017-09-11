@@ -4,24 +4,102 @@
     <meta charset="utf-8">
     <title>Items</title>
     <script src="../ext_js/jquery-3.2.1.min.js"></script>
+    <link rel="stylesheet" href="../ext_js/bootstrap/css/bootstrap.min.css">
+    <script src="../ext_js/bootstrap/js/bootstrap.min.js" charset="utf-8"></script>
     <script src="../js/utils/global_variables.js" charset="utf-8"></script>
     <script src="../js/model/http/get_records.js" charset="utf-8"></script>
     <script src="../js/model/records/record_update.js" charset="utf-8"></script>
     <script src="../js/controller/display/select_display.js" charset="utf-8"></script>
     <script src="../js/model/http/delete_records.js" charset="utf-8"></script>
     <script src="../js/model/records/record_delete.js" charset="utf-8"></script>
+    <script src="../js/controller/get/record_create.js" charset="utf-8"></script>
+    <script src="../js/model/http/post_records.js" charset="utf-8"></script>
+    <script src="../js/model/records/record_create.js" charset="utf-8"></script>
+    <script src="../js/model/records/record_update.js" charset="utf-8"></script>
+    <script src="../js/controller/get/record_update.js" charset="utf-8"></script>
+    <script src="../js/model/http/put_records.js" charset="utf-8"></script>
     <script src="../js/controller/page_load/main/item_main.js" charset="utf-8"></script>
-    <link rel="stylesheet" href="../css/transaction.css">
+    <link rel="stylesheet" href="../css/module.css">
+    <link rel="stylesheet" href="../css/modal_form.css">
   </head>
   <body>
-    <select class="displayRecords" name="itemsView" size="10" id="itemSelect" multiple>
+    <div class="modal fade" id="createItemModal" role="dialog">
+    <div class="modal-dialog">
 
-    </select>
-    <br><br>
-    <a href="modals/ItemCreate.html">Create</a>
-    <br>
-    <button type="button" name="editAccount" onclick="startUpdateProcess('Item','#itemSelect')">Edit</button>
-    <br>
-    <button type="button" name="itemsDelete" onclick="deleteRecordsByIds('items','#itemSelect')">Delete</button>
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <p class="myFormHeading">Create Item</p>
+        </div>
+        <div class="modal-body">
+          <p class="myFormText">Item Type:</p>
+          <select class="form-control myFormElements" name="Item Type" id="itemType">
+            <option value="Saree">Saree</option>
+            <option value="Chudidhar">Chudidhar</option>
+          </select>
+          <p class="myFormText">Item Name:</p>
+          <input type="text" id="itemName" name="Item Name" class="form-control myFormElements">
+          <p><button type="button" class="btn-success form-control submit_button_text" name="iInsert" onclick="insertItem()">Create</button></p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="modal fade" id="updateItemModal" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <p class="myFormHeading">Update Item</p>
+      </div>
+      <div class="modal-body">
+        <p class="myFormText">Item Type:</p>
+        <select class="form-control myFormElements" name="Item Type" id="updateItemType">
+          <option value="Saree" id="saree">Saree</option>
+          <option value="Chudidhar" id="chudidhar">Chudidhar</option>
+        </select>
+        <p class="myFormText">Item Name:</p>
+        <input type="text" id="updateItemName" name="Item Name" class="form-control myFormElements">
+          <p><button type="button" class="btn-success form-control submit_button_text" name="aUpdate" onclick="updateItem()">Update</button></p>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="Welcome.html">Vriddhi</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li><a href="Welcome.html">Home</a></li>
+      <li><a href="Account.html">Accounts</a></li>
+      <li><a href="Contact.html">Contacts</a></li>
+      <li class="active"><a href="Item.html">Items</a></li>
+      <li><a href="Transaction.html">Transactions</a></li>
+    </ul>
+  </div>
+</nav>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <select class="displayRecords form-control" name="itemsView" size="10" id="itemSelect" multiple>
+
+      </select>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <button type="button" name="createItem" class="button green-button" onclick="startCreateProcess('#createItemModal')">Create</button>
+      <button type="button" name="editAccount" class="button blue-button" onclick="startItemUpdateProcess('#updateItemModal','#itemSelect')">Edit</button>
+      <button type="button" name="accountsDelete" class="button red-button" onclick="deleteRecordsByIds('items','#itemSelect')">Delete</button>
+    </div>
+  </div>
+</div>
   </body>
 </html>

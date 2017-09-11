@@ -2,7 +2,7 @@ var startCreateProcess = function(modalId)
 {
     $(modalId).modal('show');
 }
-var insertAccount = function(moduleName) {
+var insertAccount = function() {
     var accountObj = getAccountObjectFromUI('#accountName','#accountOwner','#accountManager','#accountBalance');
     var accounts = new Array();
     accounts.push(accountObj);
@@ -13,14 +13,14 @@ var insertAccount = function(moduleName) {
             status = response["status"];
             if(status=="SUCCESS")
             {
-                alert("Record inserted successfully!");
-                window.location.replace(moduleName+".html");
+                alert("Account inserted successfully!");
+                window.location.replace("Account.html");
             }
         }
     });
 }
 
-var insertContact = function(moduleName) {
+var insertContact = function() {
     var contactObj = getContactObjectFromUI('#contactName','#primaryPhone','#secondaryPhone','#email','#primaryAddress','#secondaryAddress');
     var contacts = new Array();
     contacts.push(contactObj);
@@ -32,13 +32,13 @@ var insertContact = function(moduleName) {
             if(status=="SUCCESS")
             {
                 alert("Contact inserted successfully!");
-                window.location.replace(moduleName+".html");
+                window.location.replace("Contact.html");
             }
         }
     });
 }
 
-var insertItem = function() {
+var insertItem = function(moduleName) {
     var itemObj = getItemObjectFromUI('#itemType','#itemName');
     var items = new Array();
     items.push(itemObj);
@@ -50,7 +50,7 @@ var insertItem = function() {
             if(status=="SUCCESS")
             {
                 alert("Item inserted successfully!");
-                window.location.replace("../Item.html");
+                window.location.replace("Item.html");
             }
         }
     });
