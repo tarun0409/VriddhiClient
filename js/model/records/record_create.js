@@ -1,5 +1,40 @@
-var startCreateProcess = function(modalId)
+var startCreateProcess = function(moduleName,modalId)
 {
+    if(moduleName=="transactions")
+    {
+      var getAllItems = getRecords("items",null);
+      getAllItems.done(function(itemData){
+          if(itemData!=null)
+          {
+              var itemNames = getNames("items",itemData);
+              var itemSelectIds = ['#tItemsSelect'];
+              displayRecordNamesInSelectList("items",itemSelectIds,itemNames);
+          }
+      });
+
+      var getAllAccounts = getRecords("accounts",null);
+      getAllAccounts.done(function(accountData){
+          if(accountData!=null)
+          {
+              var accountNames = getNames("accounts",accountData);
+              var accountSelectIds = ['#tSourceAccountSelect','#tFromAccountSelect','#tToAccountSelect'];
+              displayRecordNamesInSelectList("accounts",accountSelectIds,accountNames);
+          }
+
+      });
+
+      var getAllContacts = getRecords("contacts",null);
+      getAllContacts.done(function(contactData){
+          if(contactData!=null)
+          {
+              var contactNames = getNames("contacts",contactData);
+              var contactSelectIds = ['#tBuyerSelect','#tSellerSelect'];
+              displayRecordNamesInSelectList("contacts",contactSelectIds,contactNames);
+          }
+
+      });
+
+    }
     $(modalId).modal('show');
 }
 var insertAccount = function() {
@@ -38,7 +73,7 @@ var insertContact = function() {
     });
 }
 
-var insertItem = function(moduleName) {
+var insertItem = function() {
     var itemObj = getItemObjectFromUI('#itemType','#itemName');
     var items = new Array();
     items.push(itemObj);
@@ -58,9 +93,9 @@ var insertItem = function(moduleName) {
 
 var insertTransaction = function(){
 
-    var transactionObject = getTransactionObjectFromUI('#tDate','Transaction Type','#itemsSelect',
-    '#transactionQuantity','#transactionAmount','#sourceAccountSelect','#buyerSelect','#sellerSelect',
-    '#fromAccountSelect','#toAccountSelect','#transactionNotes');
+    var transactionObject = getTransactionObjectFromUI('#tDate','Transaction Type','#tItemsSelect',
+    '#transactionQuantity','#transactionAmount','#tSourceAccountSelect','#tBuyerSelect','#tSellerSelect',
+    '#tFromAccountSelect','#tToAccountSelect','#transactionNotes');
     var transactions = new Array();
     transactions.push(transactionObject);
     var insertOneTransaction = postRecords("transactions",transactions);
@@ -71,7 +106,7 @@ var insertTransaction = function(){
             if(status=="SUCCESS")
             {
                 alert("Transaction inserted successfully!");
-                window.location.replace("../Transaction.html");
+                window.location.replace("Transaction.html");
             }
         }
     });

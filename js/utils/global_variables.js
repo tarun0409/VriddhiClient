@@ -15,7 +15,7 @@ var transactionLookupVsNameMap = {
   "To Account":"To Account"
 };
 var transactionHeaders = ["Date","Item Name","Account Name","Quantity","Transaction Amount",
-"Buyer Name","Seller Name","From Account","To Account","Notes"];
+"Buyer Name","Seller Name","From Account","To Account"];
 var accountHeaders = ["Account Name","Account Owner","Account Manager","Account Balance"];
 var itemHeaders = ["Item Type","Item Name","Available Quantity","Bought Quantity","Sold Quantity","Total Inflow","Total Outflow"];
 var contactHeaders = ["Contact Name","Primary Phone","Secondary Phone","Email","Primary Address","Secondary Address"];

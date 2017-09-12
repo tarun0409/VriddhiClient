@@ -85,20 +85,18 @@
     </ul>
   </div>
 </nav>
-<div class="container">
-  <div class="row">
-    <div class="col-md-12">
-      <select class="displayRecords form-control" name="itemsView" size="10" id="itemSelect" multiple>
+<div class="row">
+  <div class="col-md-12">
+    <select class="displayRecords" name="itemsView" size="10" id="itemSelect" multiple>
 
-      </select>
-    </div>
+    </select>
   </div>
-  <div class="row">
-    <div class="col-md-12">
-      <button type="button" name="createItem" class="button green-button" onclick="startCreateProcess('#createItemModal')">Create</button>
-      <button type="button" name="editAccount" class="button blue-button" onclick="startItemUpdateProcess('#updateItemModal','#itemSelect')">Edit</button>
-      <button type="button" name="accountsDelete" class="button red-button" onclick="deleteRecordsByIds('items','#itemSelect')">Delete</button>
-    </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <button type="button" name="createItem" class="button green-button" onclick="startCreateProcess('items','#createItemModal')">Create</button>
+    <button type="button" name="editAccount" class="button blue-button" onclick="startItemUpdateProcess('#updateItemModal','#itemSelect')">Edit</button>
+    <button type="button" name="accountsDelete" class="button red-button" onclick="deleteRecordsByIds('items','#itemSelect')">Delete</button>
   </div>
 </div>
   </body>
