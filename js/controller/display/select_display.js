@@ -115,17 +115,19 @@ var displayRecordsSelectList = function(moduleName,selectListId, recordObj){
             for(var i=0; i<records.length; i++)
             {
                 var record = records[i];
-                var optionString = '<option class="multiSelectOptionTabs"';
+                var optionString = '<option class="multiSelectOptionTabs';
+                if(moduleName=="transactions" && "Transaction Type" in record)
+                {
+                    var tType = record["Transaction Type"];
+                    optionString+=" "+tType;
+                }
+                optionString+='"';
                 if("ID" in record)
                 {
                     var aId = record["ID"];
                     optionString+=' value="'+aId+'"';
                 }
-                else if(moduleName=="transactions" && "Transaction Type" in transaction)
-                {
-                    var tType = transaction["Transaction Type"];
-                    optionString+=' class="'+tType+'"';
-                }
+
                 optionString+=">";
                 for(var j=0; j<moduleHeaders.length; j++)
                 {

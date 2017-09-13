@@ -30,3 +30,11 @@
   margin-bottom: 20px;
   margin-left: 20px;
 }
+
+.BUY {
+  background-color: #ffc5bc;
+}
+
+.SELL {
+  background-color: #c5ffab;
+}
