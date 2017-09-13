@@ -6,5 +6,11 @@ $(document).ready(function(){
       {
           displayRecordsSelectList("contacts",'#contactSelect',contactData);
       }
+      else
+      {
+          $("#noRecordsShow").append('<h4 class="noRecordsText"> There are no contacts to show</h4>');
+          $("#contactEditButton").hide();
+          $("#contactSelect").hide();
+      }
   });
 });

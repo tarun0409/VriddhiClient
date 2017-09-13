@@ -85,6 +85,9 @@
     </ul>
   </div>
 </nav>
+<div id="noRecordsShow">
+
+</div>
 <div class="row">
   <div class="col-md-12">
     <select class="displayRecords" name="itemsView" size="10" id="itemSelect" multiple>
@@ -95,7 +98,7 @@
 <div class="row">
   <div class="col-md-12">
     <button type="button" name="createItem" class="button green-button" onclick="startCreateProcess('items','#createItemModal')">Create</button>
-    <button type="button" name="editAccount" class="button blue-button" onclick="startItemUpdateProcess('#updateItemModal','#itemSelect')">Edit</button>
+    <button type="button" name="editAccount" id="itemEditButton" class="button blue-button" onclick="startItemUpdateProcess('#updateItemModal','#itemSelect')">Edit</button>
   </div>
 </div>
   </body>

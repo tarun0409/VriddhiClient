@@ -6,5 +6,11 @@ $(document).ready(function(){
       {
           displayRecordsSelectList("items",'#itemSelect',itemData);
       }
+      else
+      {
+          $("#noRecordsShow").append('<h4 class="noRecordsText"> There are no items to show</h4>');
+          $("#itemEditButton").hide();
+          $("#itemSelect").hide();
+      }
   });
 });

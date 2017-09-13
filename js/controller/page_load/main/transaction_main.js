@@ -11,5 +11,11 @@ $(document).ready(function(){
               displayRecordsSelectList("transactions",'#transactionSelect',transactionObj);
           });
       }
+      else
+      {
+          $("#noRecordsShow").append('<h4 class="noRecordsText"> There are no transactions to show</h4>');
+          $("#transactionEditButton").hide();
+          $("#transactionSelect").hide();
+      }
   });
 });

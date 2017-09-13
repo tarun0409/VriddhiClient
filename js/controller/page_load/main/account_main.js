@@ -6,5 +6,11 @@ $(document).ready(function(){
       {
           displayRecordsSelectList("accounts",'#accountSelect',accountData);
       }
+      else
+      {
+          $("#noRecordsShow").append('<h4 class="noRecordsText"> There are no accounts to show</h4>');
+          $("#accountEditButton").hide();
+          $("#accountSelect").hide();
+      }
   });
 });

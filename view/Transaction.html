@@ -100,7 +100,9 @@
     </div>
   </nav>
 
+  <div id="noRecordsShow">
 
+  </div>
   <div class="row">
     <div class="col-md-12">
       <select class="displayRecords" name="accountsView" size="10" id="transactionSelect" multiple>
@@ -111,7 +113,7 @@
   <div class="row">
     <div class="col-md-12">
       <button type="button" name="createAccount" class="button green-button" onclick="startCreateProcess('transactions','#createTransactionModal')">Create</button>
-      <button type="button" name="accountsDelete" class="button red-button" onclick="deleteRecordsByIds('transactions','#transactionSelect')">Delete</button>
+      <button type="button" name="accountsDelete" id="transactionEditButton" class="button red-button" onclick="deleteRecordsByIds('transactions','#transactionSelect')">Delete</button>
     </div>
   </div>
 
